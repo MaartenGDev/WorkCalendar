@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Google.Apis.Calendar.v3.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +38,12 @@ namespace Web.Controllers
 
 
             return formatter.GetAsICalFormat(events, calenderName, calendarDescription);
+        }
+
+        [HttpGet("/")]
+        public ActionResult<string> GetDate()
+        {
+            return DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt");
         }
     }
 }
