@@ -11,9 +11,15 @@ namespace Web.Services
 {
     public class CalendarEventFormatter
     {
-        public string GetAsICalFormat(IEnumerable<Event> events)
+        public string GetAsICalFormat(IEnumerable<Event> events, string calendarName, string calenderDescription)
         {
-            var calendar = new Calendar {Method = "PUBLISH", Properties = { new CalendarProperty("X-PUBLISHED-TTL", "PT15M")}};
+            var calendar = new Calendar {Method = "PUBLISH", Properties =
+            {
+                new CalendarProperty("X-PUBLISHED-TTL", "PT15M"),
+                new CalendarProperty("X-WR-TIMEZONE", "Europe/Paris"),
+                new CalendarProperty("X-WR-CALNAME", calendarName),
+                new CalendarProperty("X-WR-CALDESC", calenderDescription),
+            }};
 
 
             foreach (var @event in events.Where(x => x.Start.DateTime != null && x.End.DateTime != null))

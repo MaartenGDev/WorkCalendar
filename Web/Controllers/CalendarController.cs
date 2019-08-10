@@ -22,18 +22,21 @@ namespace Web.Controllers
         {
             var formatter = new CalendarEventFormatter();
             var expectedToken = _configuration["AccessToken"];
+            var calendarNameFilter = _configuration["CalenderFilter"];
 
+            var calenderName = "WorkCalendar for " + email;
+            var calendarDescription = "All events for " + email + " from calendars matching: " + calendarNameFilter.Trim();
+            
             if (!token.Equals(expectedToken))
             {
-                return formatter.GetAsICalFormat(new List<Event>());
+                return formatter.GetAsICalFormat(new List<Event>(), calenderName, calendarDescription);
             }
 
-            var calendarNameFilter = _configuration["CalenderFilter"];
             var calendarService = new CalenderFilterService();
             var events = calendarService.GetEventsForEmailForCalendarsMatchingName(calendarNameFilter, email);
 
 
-            return formatter.GetAsICalFormat(events);
+            return formatter.GetAsICalFormat(events, calenderName, calendarDescription);
         }
     }
 }

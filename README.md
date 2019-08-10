@@ -12,6 +12,9 @@ Application to filter calendar events based on the attendees. This application c
 ```json
 {
   "AccessToken": "3e6fbc64-201e-4c9d-9377-bd0a0bf5b888",
-  "CalenderFilter": "CompanyInc", // Use "" to search through all calendars
+  "CalenderFilter": "CompanyInc",
 }
 ```
+
+### Tips
+1. Use `"CalenderFilter": ""` to search through all calendars

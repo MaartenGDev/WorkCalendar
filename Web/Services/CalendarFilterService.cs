@@ -54,7 +54,6 @@ namespace Web.Services
             EventsResource.ListRequest request = _service.Events.List(calendarId);
             request.TimeMin = DateTime.Now;
             request.SingleEvents = true;
-            request.MaxResults = 10;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
             var events = request.Execute();
