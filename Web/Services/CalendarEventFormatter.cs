@@ -19,10 +19,12 @@ namespace Web.Services
                 Properties =
             {
                 new CalendarProperty("X-PUBLISHED-TTL", "PT15M"),
-                new CalendarProperty("X-WR-TIMEZONE", "Europe/Paris"),
+                new CalendarProperty("X-WR-TIMEZONE", "Europe/Amsterdam"),
                 new CalendarProperty("X-WR-CALNAME", calendarName),
                 new CalendarProperty("X-WR-CALDESC", calenderDescription),
             }};
+
+            calendar.AddTimeZone("Europe/Amsterdam");
 
 
             foreach (var @event in events.Where(x => x.Start.DateTime != null && x.End.DateTime != null))
