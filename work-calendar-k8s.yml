@@ -75,8 +75,7 @@ spec:
               readOnly: true
             - name: tokens
               mountPath: /app/token.json
-              readOnly: true
-          
+              readOnly: false
       volumes:
         - name: secrets
           secret:
