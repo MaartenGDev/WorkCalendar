@@ -20,8 +20,9 @@ namespace Web
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel(options => {
-                    options.Listen(IPAddress.Loopback, 5080); //HTTP port
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddJsonFile($"secrets/appsettings.Development.json", true);
                 })
                 .UseStartup<Startup>();
     }
