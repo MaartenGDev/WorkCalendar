@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Google.Apis.Auth.Mvc" Version="1.40.3" />
         <PackageReference Include="Google.Apis.Calendar.v3" Version="1.40.3.1676" />
         <PackageReference Include="Ical.Net" Version="4.1.11" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
