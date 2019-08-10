@@ -37,8 +37,8 @@ namespace Web.Services
                 {
                     Description = @event.Description,
                     Summary = @event.Summary,
-                    Start = new CalDateTime(@event.Start.DateTime.Value),
-                    End = new CalDateTime(@event.End.DateTime.Value),
+                    Start = new CalDateTime(@event.Start.DateTime.Value, "Europe/Amsterdam"),
+                    End = new CalDateTime(@event.End.DateTime.Value, "Europe/Amsterdam"),
                 });
             }
 
