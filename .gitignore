@@ -357,3 +357,5 @@ MigrationBackup/
 
 .idea/
 **/token.json
+**/secrets
+!**/secrets/.gitkeep
