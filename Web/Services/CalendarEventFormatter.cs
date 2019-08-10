@@ -13,7 +13,10 @@ namespace Web.Services
     {
         public string GetAsICalFormat(IEnumerable<Event> events, string calendarName, string calenderDescription)
         {
-            var calendar = new Calendar {Method = "PUBLISH", Properties =
+            var calendar = new Calendar {
+                Method = "PUBLISH", 
+                TimeZones = { new VTimeZone("Europe/Amsterdam") },
+                Properties =
             {
                 new CalendarProperty("X-PUBLISHED-TTL", "PT15M"),
                 new CalendarProperty("X-WR-TIMEZONE", "Europe/Paris"),

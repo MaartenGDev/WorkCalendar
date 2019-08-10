@@ -39,11 +39,5 @@ namespace Web.Controllers
 
             return formatter.GetAsICalFormat(events, calenderName, calendarDescription);
         }
-
-        [HttpGet("/")]
-        public ActionResult<string> GetDate()
-        {
-            return DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt");
-        }
     }
 }
