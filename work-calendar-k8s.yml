@@ -78,9 +78,6 @@ spec:
               subPath: token.json
             - name: tz-config
               mountPath: /etc/localtime
-            - name: tz-config
-              hostPath:
-                path: /usr/share/zoneinfo/Europe/Amsterdam
       volumes:
         - name: secrets
           secret:
@@ -88,6 +85,9 @@ spec:
         - name: persistent-storage
           persistentVolumeClaim:
             claimName: work-calendar-db-pv-claim
+        - name: tz-config
+          hostPath:
+            path: /usr/share/zoneinfo/Europe/Amsterdam
             
 ---
 
