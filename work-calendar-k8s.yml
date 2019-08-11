@@ -76,6 +76,11 @@ spec:
             - name: persistent-storage
               mountPath: /app/token.json
               subPath: token.json
+            - name: tz-config
+              mountPath: /etc/localtime
+            - name: tz-config
+              hostPath:
+                path: /usr/share/zoneinfo/Europe/Amsterdam
       volumes:
         - name: secrets
           secret:
