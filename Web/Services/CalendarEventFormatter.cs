@@ -41,7 +41,7 @@ namespace Web.Services
                     Location = @event.Location,
                     Attendees = @event.Attendees == null 
                         ? new List<Attendee>() 
-                        : @event.Attendees.Select(x => new Attendee(x.Email)).ToList(),
+                        : @event.Attendees.Select(x => new Attendee { CommonName = x.DisplayName, Value = new Uri($"mailto:{x.Email}")}).ToList(),
                     Start = new CalDateTime(@event.Start.DateTime.Value),
                     End = new CalDateTime(@event.End.DateTime.Value),
                 });
