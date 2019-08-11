@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Calendar.v3.Data;
@@ -37,8 +38,12 @@ namespace Web.Services
                 {
                     Description = @event.Description,
                     Summary = @event.Summary,
-                    Start = new CalDateTime(@event.Start.DateTime.Value, "Europe/Amsterdam"),
-                    End = new CalDateTime(@event.End.DateTime.Value, "Europe/Amsterdam"),
+                    Location = @event.Location,
+                    Attendees = @event.Attendees == null 
+                        ? new List<Attendee>() 
+                        : @event.Attendees.Select(x => new Attendee(x.Email)).ToList(),
+                    Start = new CalDateTime(@event.Start.DateTime.Value),
+                    End = new CalDateTime(@event.End.DateTime.Value),
                 });
             }
 
