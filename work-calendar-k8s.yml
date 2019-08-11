@@ -73,13 +73,54 @@ spec:
             - name: secrets
               mountPath: /app/secrets
               readOnly: true
-            - name: tokens
+            - name: mysql-persistent-storage
               mountPath: /app/token.json
-              readOnly: false
+              subPath: token.json
       volumes:
         - name: secrets
           secret:
             secretName: work-calendar-appsettings
-        - name: tokens
-          secret:
-            secretName: work-calendar-tokens
+        - name: persistent-storage
+          persistentVolumeClaim:
+            claimName: work-calendar-db-pv-claim
+            
+---
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  namespace: work-calendar
+  name: work-calendar-pv
+  labels:
+    app: work-calendar
+    tier: persistence
+spec:
+  storageClassName: standard
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/work-calendar"
+
+---    
+  
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: work-calendar-db-pv-claim
+  namespace: work-calendar
+  labels:
+    app: work-calendar
+spec:
+  storageClassName: "standard"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  selector:
+    matchLabels:
+      app: work-calendar
+      tier: persistence
+---
