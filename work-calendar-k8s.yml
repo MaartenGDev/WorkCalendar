@@ -73,7 +73,7 @@ spec:
             - name: secrets
               mountPath: /app/secrets
               readOnly: true
-            - name: mysql-persistent-storage
+            - name: persistent-storage
               mountPath: /app/token.json
               subPath: token.json
       volumes:
