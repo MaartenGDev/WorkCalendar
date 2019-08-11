@@ -42,6 +42,9 @@ namespace Web.Services
                     Attendees = @event.Attendees == null 
                         ? new List<Attendee>() 
                         : @event.Attendees.Select(x => new Attendee { CommonName = x.DisplayName, Value = new Uri($"mailto:{x.Email}")}).ToList(),
+                    Organizer = @event.Organizer == null 
+                        ? null 
+                        : new Organizer {CommonName = @event.Organizer.DisplayName, Value = new Uri($"mailto:{@event.Organizer.Email}"), SentBy = new Uri($"mailto:{@event.Organizer.Email}")}, 
                     Start = new CalDateTime(@event.Start.DateTime.Value),
                     End = new CalDateTime(@event.End.DateTime.Value),
                 });
