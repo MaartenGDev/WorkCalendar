@@ -102,7 +102,7 @@ metadata:
 spec:
   storageClassName: standard
   capacity:
-    storage: 8Gi
+    storage: 10Mi
   accessModes:
     - ReadWriteOnce
   hostPath:
@@ -123,9 +123,8 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 8Gi
+      storage: 10Mi
   selector:
     matchLabels:
       app: work-calendar
       tier: persistence
----
